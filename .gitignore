@@ -1,0 +1,9 @@
+# Editor / operating-system files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local secrets and environment files (for future backend work)
+.env
+.env.*

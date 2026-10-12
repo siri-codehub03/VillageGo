@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#176b45" />
+  <title>VillageGo | Local delivery, local earning</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="VillageGo home">
+      <span class="brand-mark">VG</span>
+      <span><strong>VillageGo</strong><small>Your village, delivered.</small></span>
+    </a>
+    <div class="top-actions">
+      <span class="demo-pill">DEMO MODE</span>
+      <button class="icon-button" id="resetDemo" title="Reset demo data" aria-label="Reset demo data">↻</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">LOCAL SHOPS • LOCAL JOBS</p>
+        <h1>Good things from<br /><span>right around you.</span></h1>
+        <p>Order vegetables, fruits, fresh juice and daily essentials from nearby sellers. Local delivery partners bring them to your door.</p>
+        <div class="hero-tags"><span>🥬 Fresh produce</span><span>🥤 Juice stalls</span><span>🛵 Local delivery</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div>
+        <div class="basket">🥬🍎🥭</div><div class="scooter">🛵</div>
+        <div class="home">🏡</div>
+      </div>
+    </section>
+
+    <section class="rolebar" aria-label="Choose demo view">
+      <div><p class="eyebrow">TRY THE APP</p><h2>Choose a view</h2></div>
+      <div class="role-tabs" role="tablist">
+        <button class="role-tab active" data-view="customer" role="tab" aria-selected="true">🛍️ Customer</button>
+        <button class="role-tab" data-view="seller" role="tab" aria-selected="false">🏪 Seller</button>
+        <button class="role-tab" data-view="delivery" role="tab" aria-selected="false">🛵 Delivery</button>
+        <button class="role-tab" data-view="admin" role="tab" aria-selected="false">🧰 Admin</button>
+      </div>
+    </section>
+
+    <section id="customerView" class="view">
+      <div class="section-heading">
+        <div><p class="eyebrow">SHOP NEARBY</p><h2>What do you need today?</h2></div>
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search items or shops..." /></label>
+      </div>
+      <div class="category-tabs" id="categoryTabs">
+        <button class="category-tab active" data-category="All">✨ All</button>
+        <button class="category-tab" data-category="Vegetables">🥬 Vegetables</button>
+        <button class="category-tab" data-category="Fruits">🍎 Fruits</button>
+        <button class="category-tab" data-category="Juice">🥤 Juice</button>
+        <button class="category-tab" data-category="Groceries">🛒 Groceries</button>
+      </div>
+      <div class="shop-strip">
+        <div><span class="status-dot"></span><strong>Local demo market</strong><small>Sample sellers · choose your village with a real backend later</small></div>
+        <span class="delivery-note">Delivery fee shown at checkout</span>
+      </div>
+      <div id="productGrid" class="product-grid"></div>
+      <aside class="cart-panel">
+        <div class="cart-title"><div><p class="eyebrow">YOUR ORDER</p><h2>Shopping cart <span id="cartCount" class="count-badge">0</span></h2></div><button id="clearCart" class="text-button">Clear cart</button></div>
+        <div id="cartItems" class="cart-items"><p class="empty-state">Your cart is empty. Add something fresh!</p></div>
+        <div class="checkout-row">
+          <div><small>Estimated total</small><strong id="cartTotal">₹0</strong></div>
+          <button id="checkoutBtn" class="primary-button">Place demo order <span>→</span></button>
+        </div>
+        <p class="fine-print">Demo only: no real payment or delivery request is sent. Please do not enter personal or payment details.</p>
+      </aside>
+    </section>
+
+    <section id="sellerView" class="view hidden">
+      <div class="section-heading"><div><p class="eyebrow">SELLER SPACE</p><h2>Manage shop orders</h2><p class="muted">Example seller: Green Basket & Juice Corner</p></div><span class="role-icon">🏪</span></div>
+      <div class="stats-grid" id="sellerStats"></div>
+      <div class="panel"><div class="panel-heading"><div><h3>Incoming orders</h3><p>Accept an order when you can prepare it.</p></div><span class="live-label">● DEMO DATA</span></div><div id="sellerOrders" class="order-list"></div></div>
+      <div class="panel"><div class="panel-heading"><div><h3>Seller checklist</h3><p>Useful for a real village launch</p></div></div><ul class="checklist"><li>Confirm prices and item availability before accepting.</li><li>Pack fruits and vegetables separately from prepared drinks.</li><li>Prepare juice close to pickup time and use clean, sealed packaging.</li><li>Display applicable food-safety and seller verification status.</li></ul></div>
+    </section>
+
+    <section id="deliveryView" class="view hidden">
+      <div class="section-heading"><div><p class="eyebrow">DELIVERY PARTNER SPACE</p><h2>Find a nearby delivery job</h2><p class="muted">Demo jobs only — no real location tracking.</p></div><span class="role-icon">🛵</span></div>
+      <div class="stats-grid" id="deliveryStats"></div>
+      <div class="panel"><div class="panel-heading"><div><h3>Available & active deliveries</h3><p>Accept a job you can safely complete.</p></div><span class="live-label">● DEMO DATA</span></div><div id="deliveryOrders" class="order-list"></div></div>
+      <div class="notice"><strong>Safety first</strong><p>Real deployment should verify partners, show only necessary customer details, provide a way to report issues, and follow local rules. Minors should not be assigned unsafe or legally restricted work.</p></div>
+    </section>
+
+    <section id="adminView" class="view hidden">
+      <div class="section-heading"><div><p class="eyebrow">ADMIN OVERVIEW</p><h2>VillageGo activity</h2><p class="muted">A lightweight overview of this browser's demo data.</p></div><span class="role-icon">🧰</span></div>
+      <div id="adminStats" class="stats-grid"></div>
+      <div class="panel"><div class="panel-heading"><div><h3>All orders</h3><p>Track each order from shop to doorstep.</p></div><button id="exportCsv" class="secondary-button">Export CSV ↓</button></div><div id="adminOrders" class="order-list"></div></div>
+      <div class="panel"><h3>Before launching for real</h3><div class="launch-grid"><div>🔐<strong>Accounts & verification</strong><p>Secure sign-in and review seller/partner identity safely.</p></div><div>💳<strong>Payments</strong><p>Integrate a trusted payment provider; never store card details yourself.</p></div><div>📍<strong>Location & privacy</strong><p>Ask permission before using location and protect addresses.</p></div><div>🧾<strong>Order support</strong><p>Build cancellations, refunds, complaints and audit records.</p></div></div></div>
+    </section>
+
+    <footer><div class="brand small-brand"><span class="brand-mark">VG</span><span><strong>VillageGo</strong><small>Local shops. Local opportunity.</small></span></div><p>Student-built prototype · Data stays in this browser</p></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
